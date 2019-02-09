@@ -31,3 +31,17 @@ $ npm stop
 
 
 [egg]: https://eggjs.org
+
+### 项目规划
+- [x] 引入mysql模块并封装公共方法;
+- [x] 引入mongo模块并封装公共CRUD方法;
+- [ ] 连接redis;
+- [ ] 日志模块规范封装;
+- [ ] 通用catchError中间件开发及引入;
+
+
+### 更新日志
+#### 1.0.0
+```
+时间：2019-02-09
+描述：初次提交文件，封装mysql及mongo的CRUD方法
