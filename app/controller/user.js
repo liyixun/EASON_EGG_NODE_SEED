@@ -9,6 +9,9 @@ class UserController extends Controller{
             let userInfo = await this.ctx.service.user.findUserEmail(param.email);
             if (userInfo && userInfo.length === 1) {
                 if (userInfo[0].password == param.password) {
+                    let client = this.ctx.getRedisClient();
+                    // 设置session 12小时到期
+                    client.set(`session:${param.email}`, JSON.stringify(userInfo[0]), 'EX', 12 * 60 * 60);
                     this.ctx.body = '登录成功！';
                 } else {
                     this.ctx.body = '密码错误!';

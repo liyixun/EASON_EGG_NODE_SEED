@@ -1,7 +1,10 @@
 const mysql = require('mysql');
 const MongoClient = require('mongodb').MongoClient;
 const mongoose = require('mongoose');
+const redis = require('redis');
+const client = redis.createClient();
 const { promisify } = require('util');
+const getAsync = promisify(client.get).bind(client);
 
 module.exports = {
     // this 就是 ctx 对象，在其中可以调用 ctx 上的其他方法，或访问属性
@@ -23,5 +26,16 @@ module.exports = {
         let url = this.app.config.mongodbConfig.url + '/' + this.app.config.mongodbConfig.database;
         mongoose.connect(url);
         return mongoose;
+    },
+    getRedisClient() {
+      return client;
+    },
+    setRedisValue(key, value) {
+      client.set(key, value, redis.print);
+    },
+    getRedisValue(key) {
+        getAsync(key).then(res => {
+            return res;
+        });
     }
 };

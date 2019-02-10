@@ -35,7 +35,7 @@ $ npm stop
 ### 项目规划
 - [x] 引入mysql模块并封装公共方法;
 - [x] 引入mongo模块并封装公共CRUD方法;
-- [ ] 连接redis;
+- [x] 连接redis;
 - [ ] 日志模块规范封装;
 - [ ] 通用catchError中间件开发及引入;
 
