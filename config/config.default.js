@@ -7,7 +7,7 @@ module.exports = appInfo => {
   config.keys = appInfo.name + '_1549505982301_5536';
 
   // add your config here
-  config.middleware = ['validLogin'];
+  config.middleware = ['validLogin', 'catchError'];
   config.security = { // 先去除csrf安全策略
     csrf: {
       enable: false,

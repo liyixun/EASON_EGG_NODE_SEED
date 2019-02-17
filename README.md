@@ -38,8 +38,10 @@ $ npm stop
 - [x] 连接redis;
 - [x] session过期请求失败;
 - [ ] 日志模块规范封装;
-- [ ] 通用catchError中间件开发及引入;
+- [x] 通用catchError中间件开发及引入;
 
+### bug
+- [ ] mongose查询问题 Cannot overwrite `province` model once compiled."
 
 ### 更新日志
 #### 1.0.0
