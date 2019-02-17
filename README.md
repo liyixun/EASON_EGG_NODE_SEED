@@ -36,7 +36,7 @@ $ npm stop
 - [x] 引入mysql模块并封装公共方法;
 - [x] 引入mongo模块并封装公共CRUD方法;
 - [x] 连接redis;
-- [ ] session过期请求失败;
+- [x] session过期请求失败;
 - [ ] 日志模块规范封装;
 - [ ] 通用catchError中间件开发及引入;
 
