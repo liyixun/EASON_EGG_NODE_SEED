@@ -15,7 +15,15 @@ module.exports = appInfo => {
         mongodbConfig: {
             url: 'mongodb://localhost:27017', // 自己本地MongoDB的url
             database: 'EGG_NODE_SEED'
-        }
+        },
+        // redis: {
+        //     client: {
+        //         port: 6379,          // Redis port
+        //         host: '127.0.0.1',   // Redis host
+        //         password: 'auth',
+        //         db: 0
+        //     }
+        // }
     }
 };
 

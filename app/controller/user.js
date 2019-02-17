@@ -5,13 +5,13 @@ const Controller = require('egg').Controller;
 class UserController extends Controller{
     async login() {
         let param = this.ctx.request.body;
+        let { app } = this;
         if (param && param.email) {
             let userInfo = await this.ctx.service.user.findUserEmail(param.email);
             if (userInfo && userInfo.length === 1) {
                 if (userInfo[0].password == param.password) {
-                    let client = this.ctx.getRedisClient();
                     // 设置session 12小时到期
-                    client.set(`session:${param.email}`, JSON.stringify(userInfo[0]), 'EX', 12 * 60 * 60);
+                    app.redis.set(`session:${param.email}`, JSON.stringify(userInfo[0]), 'EX', 12 * 60 * 60);
                     this.ctx.body = '登录成功！';
                 } else {
                     this.ctx.body = '密码错误!';
@@ -21,6 +21,20 @@ class UserController extends Controller{
             }
         } else {
             this.ctx.body = '登录失败!';
+        }
+    }
+    async logout() {
+        let param = this.ctx.request.body;
+        let { app } = this;
+        if (param && param.email) {
+            let res = await app.redis.del(`session:${param.email}`);
+            if (res) {
+                this.ctx.body = '退出成功!';
+            } else {
+                this.ctx.body = '退出失败!';
+            }
+        } else {
+            this.ctx.body = '请确认用户';
         }
     }
     async queryProvinceByProvinceName() {
