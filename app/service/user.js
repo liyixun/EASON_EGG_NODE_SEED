@@ -3,7 +3,8 @@ const Service = require('egg').Service;
 class UserService extends Service {
     async findUserEmail(email) {
         let sql = "select * from users where email = ?";
-        return await this.ctx.service.common.mysqlQuery(sql, [email]);
+        return await this.ctx.service.common.mysqlExec(sql, [email]);
+        // return await this.ctx.service.common.mysqlQuery(sql, [email]);
     }
     async queryProvinceByProvinceName(param) {
         let queryCondition = {

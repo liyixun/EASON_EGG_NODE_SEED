@@ -24,6 +24,15 @@ module.exports = appInfo => {
         //         db: 0
         //     }
         // }
+        mysql: {
+            client: {
+                host : '127.0.0.1',
+                user : 'root',
+                password : 'eason-root123',                      // 自己本地MySQL的密码
+                database : 'EGG_NODE_SEED',                         // 自己MySQL对应数据库的名称
+                port : '3306'
+            }
+        },
     }
 };
 

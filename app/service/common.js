@@ -22,6 +22,17 @@ class CommonService extends Service {
             connection.end();
         });
     }
+
+    /**
+     * 直接使用egg-mysql执行sql
+     * 参考链接：https://github.com/eggjs/egg-mysql
+     * @param sql
+     * @param args
+     * @returns {Promise<*>}
+     */
+    async mysqlExec(sql, args) {
+        return await this.app.mysql.query(sql, args);
+    }
     /**
      * 查询mongo单个collection的方法
      * @param collectionName

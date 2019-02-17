@@ -12,6 +12,7 @@ class UserController extends Controller{
                 if (userInfo[0].password == param.password) {
                     // 设置session 12小时到期
                     app.redis.set(`session:${param.email}`, JSON.stringify(userInfo[0]), 'EX', 12 * 60 * 60);
+                    this.ctx.session.user = userInfo;
                     this.ctx.body = '登录成功！';
                 } else {
                     this.ctx.body = '密码错误!';
